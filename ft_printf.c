@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:23:40 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 03:07:42 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 11:09:43 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_printf(char const *format, ...)
 			{
 				count += handle_pointer(args);
 			}
-			else if (*format == 'd')
+			else if (*format == 'd' || *format == 'i')
 			{
 				count += handle_decimal(args);
 			}
@@ -44,7 +44,14 @@ int	ft_printf(char const *format, ...)
 			{
 				count += handle_hexadecimal(va_arg(args, unsigned int), *format);
 			}
-
+			else if (*format == 'u')
+			{
+				count += handle_unsigned(va_arg(args, unsigned int));
+			}
+			else if (*format == '%')
+			{
+				count += ft_putchar('%');
+			}
 		}
 		else
 		{

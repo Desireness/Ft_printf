@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:36:30 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 03:01:24 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 11:08:12 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,3 +60,9 @@ int handle_hexadecimal(unsigned int num, char specifier)
     count += ft_putnbr_base(num, base);
     return count;
 }
+
+int handle_unsigned(unsigned int num)
+{
+    return ft_putnbr_base_u(num);
+}
+
