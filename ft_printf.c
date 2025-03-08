@@ -6,13 +6,35 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:23:40 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 11:09:43 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 11:40:37 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(char const *format, ...)
+int	ft_process_format(char specifier, va_list args)
+{
+	int	count;
+
+	count = 0;
+	if (specifier == 'c')
+		count += handle_char(args);
+	else if (specifier == 's')
+		count += handle_string(args);
+	else if (specifier == 'p')
+		count += handle_pointer(args);
+	else if (specifier == 'd' || specifier == 'i')
+		count += handle_decimal(args);
+	else if (specifier == 'u')
+		count += handle_unsigned(va_arg(args, unsigned int));
+	else if (specifier == 'x' || specifier == 'X')
+		count += handle_hexadecimal(va_arg(args, unsigned int), specifier);
+	else if (specifier == '%')
+		count += handle_percentage();
+	return (count);
+}
+
+int	ft_printf(const char *format, ...)
 {
 	int		count;
 	va_list	args;
@@ -24,34 +46,7 @@ int	ft_printf(char const *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
-			{
-				count += handle_char(args);
-			}
-			else if (*format == 's')
-			{
-				count += handle_string(args);
-			}
-			else if (*format == 'p')
-			{
-				count += handle_pointer(args);
-			}
-			else if (*format == 'd' || *format == 'i')
-			{
-				count += handle_decimal(args);
-			}
-			else if (*format == 'x' || *format == 'X')
-			{
-				count += handle_hexadecimal(va_arg(args, unsigned int), *format);
-			}
-			else if (*format == 'u')
-			{
-				count += handle_unsigned(va_arg(args, unsigned int));
-			}
-			else if (*format == '%')
-			{
-				count += ft_putchar('%');
-			}
+			count += ft_process_format(*format, args);
 		}
 		else
 		{
@@ -60,5 +55,5 @@ int	ft_printf(char const *format, ...)
 		format++;
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }

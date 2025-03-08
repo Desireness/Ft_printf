@@ -6,24 +6,24 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:36:07 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 02:06:33 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 11:36:31 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
-	
+
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		ft_putchar(str[i]);
 		i++;
@@ -36,23 +36,23 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		i++;
 	}
 	return (i);
 }
 
-int ft_putnbr_base(unsigned long nbr, char *base)
+int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-    int count = 0;
+	int	count;
 
-    if (nbr >= 16)
-        count += ft_putnbr_base(nbr / 16, base);
-    ft_putchar(base[nbr % 16]);
-    count++;
-
-    return count;
+	count = 0;
+	if (nbr >= 16)
+		count += ft_putnbr_base(nbr / 16, base);
+	ft_putchar(base[nbr % 16]);
+	count++;
+	return (count);
 }
 
 void	ft_putnbr(int n)
