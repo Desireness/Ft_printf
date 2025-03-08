@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 02:10:59 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 02:23:46 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 02:45:57 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,18 @@ int ft_num_len(int n)
     }
 
     return len;
+}
+
+char ft_toupper(char c)
+{
+	if(c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
+}
+
+char ft_tolower(char c)
+{
+	if(c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

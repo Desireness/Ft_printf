@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:36:30 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 02:29:55 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 03:01:24 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,22 @@ int	handle_decimal(va_list args)
 	num = va_arg(args, int);
 	ft_putnbr(num);
 	return (ft_num_len(num));
+}
+
+int handle_hexadecimal(unsigned int num, char specifier)
+{
+    int count = 0;
+    char *base;
+
+    if (specifier == 'x')
+    {
+        base = "0123456789abcdef";
+    }
+    else if (specifier == 'X')
+    {
+        base = "0123456789ABCDEF";
+    }
+
+    count += ft_putnbr_base(num, base);
+    return count;
 }

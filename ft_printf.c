@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:23:40 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 02:32:30 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 03:07:42 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	ft_printf(char const *format, ...)
 			{
 				count += handle_decimal(args);
 			}
+			else if (*format == 'x' || *format == 'X')
+			{
+				count += handle_hexadecimal(va_arg(args, unsigned int), *format);
+			}
+
 		}
 		else
 		{

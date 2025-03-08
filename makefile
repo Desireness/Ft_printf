@@ -1,5 +1,5 @@
 # Variables
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC = ft_printf.c ft_printf_utils.c  ft_printf_utils1.c ft_printf_format.c
 OBJ = $(SRC:.c=.o)
