@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:36:30 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 11:30:13 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:13:23 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,40 @@
 
 int	handle_char(va_list args)
 {
-	char	c;
+	unsigned char	c;
 
-	c = va_arg(args, int);
-	return (ft_putchar(c));
+	c = (char)va_arg(args, int);
+	ft_putchar(c);
+	return (1);
 }
 
 int	handle_string(va_list args)
 {
 	char	*str;
 
-	*str = va_arg(args, char *);
+	str = va_arg(args, char *);
+	if (str == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
 	return (ft_putstr(str));
 }
 
 int	handle_pointer(va_list args)
 {
 	void	*ptr;
+	int		len;
 
-	*ptr = va_arg(args, void *);
-	if (!ptr)
-		return (ft_putstr("0x0"));
+	ptr = va_arg(args, void *);
+	if (ptr == NULL)
+	{
+		ft_putstr("(nil)");
+		return (5);
+	}
 	ft_putstr("0x");
-	ft_putnbr_base((unsigned long)ptr, "0123456789abcdef");
-	return (ft_strlen(ptr));
+	len = ft_putnbr_base((unsigned long)ptr, "0123456789abcdef");
+	return (len + 2);
 }
 
 int	handle_decimal(va_list args)

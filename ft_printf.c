@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 00:23:40 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 11:40:37 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:22:24 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	ft_process_format(char specifier, va_list args)
 	else if (specifier == 'x' || specifier == 'X')
 		count += handle_hexadecimal(va_arg(args, unsigned int), specifier);
 	else if (specifier == '%')
-		count += handle_percentage();
+	{
+		ft_putchar('%');
+		count++;
+	}
 	return (count);
 }
 

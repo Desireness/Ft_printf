@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:36:07 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 11:36:31 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:12:54 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (str == NULL)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	while (str[i] != '\0')
 	{
 		ft_putchar(str[i]);
 		i++;
