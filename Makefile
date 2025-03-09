@@ -32,7 +32,7 @@ clean:
 
 # Eliminar los archivos objeto y la librería
 fclean: clean
-		rm -f $(NAME)
+	rm -f $(NAME) ./a.out
 
 # Regenerar todo (limpiar y compilar de nuevo)
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: rauizqui <rauizqui@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 00:36:50 by rauizqui          #+#    #+#             */
-/*   Updated: 2025/03/08 11:33:07 by rauizqui         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:36:19 by rauizqui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <limits.h>
 
 // Prototipos de las funciones
 int			ft_printf(const char *format, ...);
